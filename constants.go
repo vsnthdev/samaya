@@ -4,6 +4,7 @@ package main
 type ArgumentSkleton struct {
 	verbose bool
 	dryRun  bool
+	version bool
 }
 
 // EndPoint is the string URL from where we can fetch the current time

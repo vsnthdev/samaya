@@ -5,7 +5,7 @@ run:
 	go run .
 
 build:
-	go build -o ./bin/samaya
+	go build -o ./bin/samaya.exe
 
 install:
 	cp ./bin/samaya /usr/bin

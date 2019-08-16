@@ -1,0 +1,5 @@
+1 = Unable to fetch from the API
+2 = Unable to read the response body of the HTTP request
+3 = Unable to parse the server's JSON response
+4 = Unable to parse Window Time from the server
+5 = Failed to set time
