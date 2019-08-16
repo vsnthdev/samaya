@@ -1,10 +1,10 @@
 deps:
-	echo "Will add the dependencies here"
+	go get -u github.com/spf13/cobra/cobra
 
 build:
-	go build -o ./bin/samaya main.go
+	go build -o ./bin/samaya
 
-install: build
+install:
 	cp ./bin/samaya /usr/bin
 
 clean:
