@@ -1,6 +1,9 @@
 deps:
 	go get -u github.com/spf13/cobra/cobra
 
+run:
+	go run .
+
 build:
 	go build -o ./bin/samaya
 

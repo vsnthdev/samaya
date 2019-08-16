@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -14,9 +12,7 @@ var rootCmd = &cobra.Command{
 	Long: `____ ____ _  _ ____ _   _ ____ 
 [__  |__| |\/| |__|  \_/  |__| 
 ___] |  | |  | |  |   |   |  | `,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(arguments.verbose)
-	},
+	Run: Start,
 }
 
 func main() {
