@@ -6,12 +6,14 @@ import (
 	"os"
 	"os/exec"
 	"time"
+
+	"github.com/vasanthdeveloper/samaya/constants"
 )
 
 // SetWindowsTime is the function that sets the time for a Linux operating system
-func SetWindowsTime(dateTime string, arguments ArgumentSkleton) {
+func SetWindowsTime(dateTime string, arguments constants.ArgumentSkleton) {
 	// Tell the user that we are parsing the time
-	if arguments.verbose == true {
+	if arguments.Verbose == true {
 		log.Println("Parsing the time string from server.")
 	}
 
@@ -19,7 +21,7 @@ func SetWindowsTime(dateTime string, arguments ArgumentSkleton) {
 	time, err := time.Parse(time.RFC3339, dateTime)
 	if err != nil {
 		// Tell the user that we were unable to parse Windows time
-		if arguments.verbose == true {
+		if arguments.Verbose == true {
 			log.Fatalln("Failed to parse time string from the server.")
 		}
 
@@ -36,14 +38,14 @@ func SetWindowsTime(dateTime string, arguments ArgumentSkleton) {
 	setDate.Stderr = &errBytes
 
 	// Tell the user that we have started to set the time
-	if arguments.verbose == true {
+	if arguments.Verbose == true {
 		log.Println("Setting time.")
 	}
 	// Run the above created command
 	err = setDate.Run()
 	if err != nil {
 		// Tell the user that we were unable to set the time
-		if arguments.verbose == true {
+		if arguments.Verbose == true {
 			log.Fatalln("Failed to set time.")
 		}
 

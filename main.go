@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/vasanthdeveloper/samaya/constants"
+
 	"github.com/spf13/cobra"
 )
 
-var arguments = ArgumentSkleton{}
+var arguments = constants.ArgumentSkleton{}
 
 var rootCmd = &cobra.Command{
 	Use:   "samaya",
@@ -19,9 +21,9 @@ ___] |  | |  | |  |   |   |  | `,
 }
 
 func main() {
-	rootCmd.Flags().BoolVarP(&arguments.verbose, "verbose", "v", false, "Show extended output")
-	rootCmd.Flags().BoolVarP(&arguments.dryRun, "dry", "d", false, "Fetch the time, but don't update it")
-	rootCmd.Flags().BoolVarP(&arguments.version, "version", "V", false, "Print the version number and exit")
+	rootCmd.Flags().BoolVarP(&arguments.Verbose, "verbose", "v", false, "Show extended output")
+	rootCmd.Flags().BoolVarP(&arguments.DryRun, "dry", "d", false, "Fetch the time, but don't update it")
+	rootCmd.Flags().BoolVarP(&arguments.Version, "version", "V", false, "Print the version number and exit")
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)
@@ -29,12 +31,12 @@ func main() {
 }
 
 func start(cmd *cobra.Command, args []string) {
-	if arguments.dryRun == true || arguments.verbose == true {
+	if arguments.DryRun == true || arguments.Verbose == true {
 		fmt.Println("samaya, v0.0.0")
 	}
 
 	// If, version was true, the next thing todo is exit
-	if arguments.version == true {
+	if arguments.Version == true {
 		os.Exit(0)
 	}
 
