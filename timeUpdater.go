@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 	"runtime"
 
 	"github.com/vasanthdeveloper/samaya/constants"
+	"github.com/vasanthdeveloper/samaya/specific"
 )
 
 // Start is the function that is trigger by the command line parser cobra
@@ -61,9 +63,12 @@ func Start(arguments constants.ArgumentSkleton) {
 
 	if runtime.GOOS == "linux" {
 		// As Linux time can be set using unix time, no need to parse and format the time
-		SetLinuxTime(result["utc_datetime"].(string), result["timezone"].(string), arguments)
+		specific.SetLinuxTime(result["utc_datetime"].(string), result["timezone"].(string), arguments)
 	} else if runtime.GOOS == "windows" {
 		// Windows requires datetime and not utc_datetime
-		SetWindowsTime(result["datetime"].(string), arguments)
+		specific.SetWindowsTime(result["datetime"].(string), arguments)
+	} else if runtime.GOOS == "darwin" {
+		fmt.Println("This program doesn't work on a macOS system yet.")
+		fmt.Println("Because I don't have a Apple computer to test it.")
 	}
 }
