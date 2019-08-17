@@ -1,11 +1,12 @@
 package specific
 
 import (
-	"bytes"
 	"log"
 	"os"
 	"os/exec"
 	"time"
+
+	"github.com/vasanthdeveloper/samaya/logger"
 
 	"github.com/vasanthdeveloper/samaya/constants"
 )
@@ -32,22 +33,20 @@ func SetWindowsTime(dateTime string, arguments constants.ArgumentSkleton) {
 	formattedTime := time.Format("02 January 2006 03:04:05 PM")
 
 	// Set the time and date on Windows
-	var outBytes, errBytes bytes.Buffer
+	// var outBytes, errBytes bytes.Buffer
 	setDate := exec.Command("powershell", "Set-Date", "\""+formattedTime+"\"")
-	setDate.Stdout = &outBytes
-	setDate.Stderr = &errBytes
+	// setDate.Stdout = &outBytes
+	// setDate.Stderr = &errBytes
 
 	// Tell the user that we have started to set the time
-	if arguments.Verbose == true {
-		log.Println("Setting time.")
-	}
+	logger.Info("Setting system time")
+	logger.Command("powershell Set-Date \"" + formattedTime + "\"")
+
 	// Run the above created command
 	err = setDate.Run()
 	if err != nil {
 		// Tell the user that we were unable to set the time
-		if arguments.Verbose == true {
-			log.Fatalln("Failed to set time.")
-		}
+		logger.Fatal("Failed to set system time")
 
 		os.Exit(5)
 	}

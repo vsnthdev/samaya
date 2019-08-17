@@ -10,4 +10,4 @@ type ArgumentSkleton struct {
 
 // EndPoint is the variable that will contain the URL at which we send a HTTP
 // GET request to get the time
-var EndPoint = "http://worldtimeapi.org/api/ip"
+var EndPoint = "https://worldtimeapi.org/api/ip"

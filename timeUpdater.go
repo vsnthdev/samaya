@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"runtime"
+
+	"github.com/vasanthdeveloper/samaya/logger"
 
 	"github.com/vasanthdeveloper/samaya/constants"
 	"github.com/vasanthdeveloper/samaya/specific"
@@ -17,17 +18,13 @@ import (
 func Start(arguments constants.ArgumentSkleton) {
 
 	// Tell the user that we started sending HTTP request
-	if arguments.Verbose == true {
-		log.Println("Sending HTTP Request to: " + constants.EndPoint + ".")
-	}
+	logger.Info("Sending HTTP Request to: " + constants.EndPoint)
 
 	// Send a GET HTTP request to our endpoint to get the current time
 	response, err := http.Get(constants.EndPoint)
 	if err != nil {
 		// Tell the user that we were unable to send an HTTP request to the API
-		if arguments.Verbose == true {
-			log.Fatalln("Failed to send HTTP GET request to: " + constants.EndPoint + ".")
-		}
+		logger.Fatal("Failed to send HTTP GET request to: " + constants.EndPoint)
 
 		os.Exit(1)
 	}
@@ -36,27 +33,21 @@ func Start(arguments constants.ArgumentSkleton) {
 	data, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		// Tell the user we were unable to get the response from server
-		if arguments.Verbose == true {
-			log.Fatalln("Failed to get response from the server.")
-		}
+		logger.Fatal("Failed to get response from the server.")
 
 		os.Exit(2)
 	}
 	strData := string(data)
 
 	// Tell the user we have started to parse the JSON string
-	if arguments.Verbose == true {
-		log.Println("Parsing response body.")
-	}
+	logger.Info("Parsing response body")
 
 	// Parse the string into a JSON
 	var result map[string]interface{}
 	err = json.Unmarshal([]byte(strData), &result)
 	if err != nil {
 		// Tell the user that we were unable to parse server's response
-		if arguments.Verbose == true {
-			log.Fatalln("Failed parsing the server response.")
-		}
+		logger.Fatal("Failed parsing the server response.")
 
 		os.Exit(3)
 	}

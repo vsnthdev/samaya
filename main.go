@@ -1,10 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/vasanthdeveloper/samaya/constants"
+	"github.com/vasanthdeveloper/samaya/logger"
 
 	"github.com/spf13/cobra"
 )
@@ -31,14 +29,14 @@ func main() {
 }
 
 func start(cmd *cobra.Command, args []string) {
-	if arguments.DryRun == true || arguments.Verbose == true {
-		fmt.Println("samaya, v0.0.0")
-	}
+	// This allows the logger to only log messages in verbose mode
+	logger.Arguments = arguments
 
-	// If, version was true, the next thing todo is exit
-	if arguments.Version == true {
-		os.Exit(0)
-	}
+	// Print the app name & version
+	logger.PrintApp()
+
+	// If the user passed the version flag, then show the version information
+	logger.PrintVersion()
 
 	// Start the start function
 	Start(arguments)
