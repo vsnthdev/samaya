@@ -2,6 +2,7 @@ package specific
 
 import (
 	"os/exec"
+	"strconv"
 	"time"
 
 	"github.com/vasanthdeveloper/samaya/constants"
@@ -15,10 +16,16 @@ func SetLinuxTime(utcDatetime string, timezone string, arguments constants.Argum
 		panic(err)
 	}
 
-	setDate := exec.Command("date", "-s @"+string(time.Unix()))
+	setDate := exec.Command("date", "-s @"+strconv.Itoa(int(time.Unix())))
 	setTimezone := exec.Command("timedatectl", "set-timezone", timezone)
 
 	// Set the timezone first, and then set the date
-	setTimezone.Run()
-	setDate.Run()
+	err = setTimezone.Run()
+	if err != nil {
+		panic(err)
+	}
+	err = setDate.Run()
+	if err != nil {
+		panic(err)
+	}
 }
