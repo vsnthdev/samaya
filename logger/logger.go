@@ -16,6 +16,12 @@ import (
 // will be passed on to the logger module
 var Arguments = constants.ArgumentSkleton{}
 
+// Build is where the program's build type is passed from main package
+var Build string
+
+// Version is where the program's version is passed from the main package
+var Version string
+
 // ExecutionStartTime is the time variable that holds the time at which we finished parsing
 // the command line arguments
 var ExecutionStartTime = time.Now()
@@ -55,24 +61,10 @@ func Fatal(message string) {
 func PrintApp() {
 	if Arguments.Verbose == true || Arguments.Version {
 		if runtime.GOOS == "windows" {
-			fmt.Println("samaya   v0.0.0 [Development]")
+			fmt.Println("samaya   v" + Version + " [" + Build + "]")
 		} else {
-			fmt.Println("samaya   v0.0.0 " + color.DarkGray("[Development]"))
+			fmt.Println("samaya   v" + Version + " " + color.DarkGray("[") + color.DarkGray(Build) + color.DarkGray("]"))
 		}
-	}
-}
-
-// PrintVersion is the function that is going to output certain information
-func PrintVersion() {
-	if Arguments.Version == true {
-		// [TODO]: Show the compiled kernel
-		// [TODO]: Show the compiled machine name
-		// [TODO]: Show the compiled time
-		// [TODO]: Show the compiled license
-		// [TODO]: Show the compiled Git branch
-		// [TODO]: Show the compiled Git version
-		// [TODO]: Show the compiled Git commit hash [short]
-		os.Exit(0)
 	}
 }
 

@@ -5,6 +5,25 @@
 #  _____/   /_____/    |  The definition file for "make"
 #                      |
 
+# Critical Program Information
+VERSION := 0.0.0
+BUILD := Development
+BRANCH := $(shell git branch | grep \* | cut -d ' ' -f2)
+COMMIT := $(shell git rev-parse HEAD)
+
+# Platform dependent automatic program information
+ifeq ($(OS),Windows_NT)
+else
+	USER := $(shell echo $$USER)
+	HOSTNAME := $(shell echo $$HOSTNAME)
+	TIME := $(shell date +%s)
+	BUILDOS := $(shell uname -s)
+	KERNEL := $(shell uname -r)
+endif
+
+# Compilation flags
+FLAGS := -ldflags "-X main.Version=$(VERSION) -X main.Build=$(BUILD) -X main.GitBranch=$(BRANCH) -X main.CommitHash=$(COMMIT) -X main.Username=$(USER) -X main.Hostname=$(HOSTNAME) -X main.BuildTime=$(TIME) -X main.BuildOS=$(BUILDOS) -X main.Kernel=$(KERNEL)"
+
 # Add automatically the ".exe" at the end of build file
 BINEXE := 
 ifeq ($(OS),Windows_NT)
@@ -25,19 +44,20 @@ deps:
 	go get -u github.com/spf13/cobra/cobra
 	go get github.com/inconshreveable/mousetrap
 	go get github.com/bclicn/color
+	go get github.com/gosuri/uitable
 
 # Build for current processor architecture and operating system
 build:
-	go build -o $(BINEXE)
+	go build $(FLAGS) -o $(BINEXE)
 
 # Build for Linux and Windows
 # [NOTE]: This target only works on Linux
 build-all:
-	GOOS=linux GOARCH=amd64 go build -o ./bin/samaya-linux64
-	GOOS=windows GOARCH=amd64 go build -o ./bin/samaya-win64.exe
+	GOOS=linux GOARCH=amd64 go build $(FLAGS) -o ./bin/samaya-linux64
+	GOOS=windows GOARCH=amd64 go build $(FLAGS) -o ./bin/samaya-win64.exe
 
-	GOOS=linux GOARCH=386 go build -o ./bin/samaya-linux32
-	GOOS=windows GOARCH=386 go build -o ./bin/samaya-win32.exe
+	GOOS=linux GOARCH=386 go build $(FLAGS) -o ./bin/samaya-linux32
+	GOOS=windows GOARCH=386 go build $(FLAGS) -o ./bin/samaya-win32.exe
 
 # Clean any generated files
 clean:
