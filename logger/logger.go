@@ -4,6 +4,7 @@ package logger
 import (
 	"fmt"
 	"os"
+	"runtime"
 
 	"github.com/bclicn/color"
 	"github.com/vasanthdeveloper/samaya/constants"
@@ -16,26 +17,42 @@ var Arguments = constants.ArgumentSkleton{}
 // Info function will log an info message
 func Info(message string) {
 	if Arguments.Verbose == true {
-		fmt.Printf(color.LightBlue("info")+" %s.\n", message)
+		if runtime.GOOS == "windows" {
+			fmt.Println("info     " + message + ".")
+		} else {
+			fmt.Printf(color.LightBlue("info")+"     %s.\n", message)
+		}
 	}
 }
 
 // Command message will log a message that shows a command
 func Command(command string) {
 	if Arguments.Verbose == true {
-		fmt.Printf(color.LightPurple("command")+" %s\n", command)
+		if runtime.GOOS == "windows" {
+			fmt.Println("command  " + command)
+		} else {
+			fmt.Printf(color.LightPurple("command")+"  %s\n", command)
+		}
 	}
 }
 
 // Fatal logs an error message
 func Fatal(message string) {
-	os.Stderr.WriteString(color.LightRed("fatal") + " " + message + ".\n")
+	if runtime.GOOS == "windows" {
+		os.Stderr.WriteString("fatal    " + message + "\n")
+	} else {
+		os.Stderr.WriteString(color.LightRed("fatal") + "    " + message + ".\n")
+	}
 }
 
 // PrintApp is the function that prints the app name and it's version
 func PrintApp() {
 	if Arguments.Verbose == true || Arguments.Version {
-		fmt.Println("samaya, v0.0.0 " + color.DarkGray("[Development]"))
+		if runtime.GOOS == "windows" {
+			fmt.Println("samaya   v0.0.0 [Development]")
+		} else {
+			fmt.Println("samaya   v0.0.0 " + color.DarkGray("[Development]"))
+		}
 	}
 }
 
