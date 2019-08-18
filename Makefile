@@ -8,11 +8,16 @@
 # Critical Program Information
 VERSION := 0.0.0
 BUILD := Development
-BRANCH := $(shell git branch | grep \* | cut -d ' ' -f2)
+BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git rev-parse HEAD)
 
 # Platform dependent automatic program information
 ifeq ($(OS),Windows_NT)
+	USER := $(shell powershell echo $$env:USERNAME)
+	HOSTNAME := $(shell powershell echo $$env:COMPUTERNAME)
+	TIME := $(shell powershell Get-Date -Format G)
+	BUILDOS := $(shell powershell (Get-WmiObject Win32_OperatingSystem).caption)
+	KERNEL := $(shell powershell (Get-CimInstance Win32_OperatingSystem).version)
 else
 	USER := $(shell echo $$USER)
 	HOSTNAME := $(shell echo $$HOSTNAME)
@@ -22,7 +27,7 @@ else
 endif
 
 # Compilation flags
-FLAGS := -ldflags "-X main.Version=$(VERSION) -X main.Build=$(BUILD) -X main.GitBranch=$(BRANCH) -X main.CommitHash=$(COMMIT) -X main.Username=$(USER) -X main.Hostname=$(HOSTNAME) -X main.BuildTime=$(TIME) -X main.BuildOS=$(BUILDOS) -X main.Kernel=$(KERNEL)"
+FLAGS := -ldflags "-X 'main.Version=$(VERSION)' -X 'main.Build=$(BUILD)' -X 'main.GitBranch=$(BRANCH)' -X 'main.CommitHash=$(COMMIT)' -X 'main.Username=$(USER)' -X 'main.Hostname=$(HOSTNAME)' -X 'main.BuildTime=$(TIME)' -X 'main.BuildOS=$(BUILDOS)' -X 'main.Kernel=$(KERNEL)'"
 
 # Add automatically the ".exe" at the end of build file
 BINEXE := 

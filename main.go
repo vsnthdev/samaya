@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
-	"time"
 
 	"github.com/gosuri/uitable"
 
@@ -53,13 +51,6 @@ func start(cmd *cobra.Command, args []string) {
 
 func printVersion() {
 	if arguments.Version == true {
-		unixDateInt, err := strconv.ParseInt(BuildTime, 10, 64)
-		if err != nil {
-			logger.Fatal("Compilation flags are courrpt")
-			os.Exit(-1)
-		}
-		compilationTime := time.Unix(unixDateInt, 0)
-
 		table := uitable.New()
 		table.AddRow("Name:", "samaya")
 		table.AddRow("Version:", Version)
@@ -68,7 +59,7 @@ func printVersion() {
 		table.AddRow("Branch:", GitBranch)
 		table.AddRow("Commit:", CommitHash)
 		table.AddRow("Build By:", Username+"@"+Hostname)
-		table.AddRow("Build On:", compilationTime.Format("02 January 2006 03:04:05 PM"))
+		table.AddRow("Build On:", BuildTime)
 		table.AddRow("Build Kernel:", BuildOS+" "+Kernel)
 
 		fmt.Println(table)
