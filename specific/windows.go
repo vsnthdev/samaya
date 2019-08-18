@@ -41,4 +41,6 @@ func SetWindowsTime(dateTime string, arguments constants.ArgumentSkleton) {
 
 		os.Exit(5)
 	}
+
+	logger.PrintElapsedTime()
 }

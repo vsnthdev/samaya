@@ -3,8 +3,10 @@ package logger
 
 import (
 	"fmt"
+	"math"
 	"os"
 	"runtime"
+	"time"
 
 	"github.com/bclicn/color"
 	"github.com/vasanthdeveloper/samaya/constants"
@@ -13,6 +15,10 @@ import (
 // Arguments is the variable were the arguments parsed by cobra module
 // will be passed on to the logger module
 var Arguments = constants.ArgumentSkleton{}
+
+// ExecutionStartTime is the time variable that holds the time at which we finished parsing
+// the command line arguments
+var ExecutionStartTime = time.Now()
 
 // Info function will log an info message
 func Info(message string) {
@@ -68,4 +74,27 @@ func PrintVersion() {
 		// [TODO]: Show the compiled Git commit hash [short]
 		os.Exit(0)
 	}
+}
+
+// PrintElapsedTime is the function that prints how much time was taken
+func PrintElapsedTime() {
+	if Arguments.Verbose == true {
+		elapsedTime := time.Now()
+		elapsed := elapsedTime.Sub(ExecutionStartTime)
+
+		if runtime.GOOS == "windows" {
+			fmt.Printf("took     %0.2fs \n", roundUp(elapsed.Seconds(), 2))
+		} else {
+			fmt.Printf(color.BLightGreen("took")+"%0.2fs \n", roundUp(elapsed.Seconds(), 2))
+		}
+	}
+}
+
+func roundUp(input float64, places int) (newVal float64) {
+	var round float64
+	pow := math.Pow(10, float64(places))
+	digit := pow * input
+	round = math.Ceil(digit)
+	newVal = round / pow
+	return
 }
