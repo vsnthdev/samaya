@@ -34,12 +34,16 @@ func SetWindowsTime(dateTime string, arguments constants.ArgumentSkleton) {
 	logger.Command("powershell Set-Date \"" + formattedTime + "\"")
 
 	// Run the above created command
-	err = setDate.Run()
-	if err != nil {
-		// Tell the user that we were unable to set the time
-		logger.Fatal("Failed to set system time")
+	if arguments.DryRun == false {
+		err = setDate.Run()
+		if err != nil {
+			// Tell the user that we were unable to set the time
+			logger.Fatal("Failed to set system time")
 
-		os.Exit(5)
+			os.Exit(5)
+		}
+	} else {
+		logger.Info("Running in dry mode. No modification to the system are made")
 	}
 
 	// Print how much time it took to execute this command

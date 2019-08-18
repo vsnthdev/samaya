@@ -25,22 +25,28 @@ func SetLinuxTime(utcDatetime string, timezone string, arguments constants.Argum
 	// Set the timezone first, and then set the date
 	logger.Info("Setting timezone")
 	logger.Command("timedatectl set-timezone \"" + timezone + "\"")
-	err = setTimezone.Run()
-	if err != nil {
-		// Tell the user we failed at setting the timezone
-		logger.Fatal("Failed to set system timezone")
+	if arguments.DryRun == false {
+		err = setTimezone.Run()
+		if err != nil {
+			// Tell the user we failed at setting the timezone
+			logger.Fatal("Failed to set system timezone")
 
-		os.Exit(7)
+			os.Exit(7)
+		}
 	}
 
 	logger.Info("Setting system time")
 	logger.Command("date -s @" + strconv.Itoa(int(time.Unix())))
-	err = setDate.Run()
-	if err != nil {
-		// Tell the user we failed at setting the timezone
-		logger.Fatal("Failed to set system time")
+	if arguments.DryRun == false {
+		err = setDate.Run()
+		if err != nil {
+			// Tell the user we failed at setting the timezone
+			logger.Fatal("Failed to set system time")
 
-		os.Exit(5)
+			os.Exit(5)
+		}
+	} else {
+		logger.Info("Running in dry mode. No modification to the system are made")
 	}
 
 	// Print how long it took to execute the commands

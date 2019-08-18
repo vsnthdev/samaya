@@ -21,7 +21,7 @@ ifeq ($(OS),Windows_NT)
 else
 	USER := $(shell echo $$USER)
 	HOSTNAME := $(shell echo $$HOSTNAME)
-	TIME := $(shell date +%s)
+	TIME := $(shell date)
 	BUILDOS := $(shell uname -s)
 	KERNEL := $(shell uname -r)
 endif
