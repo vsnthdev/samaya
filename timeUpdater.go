@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -58,8 +57,5 @@ func Start(arguments constants.ArgumentSkleton) {
 	} else if runtime.GOOS == "windows" {
 		// Windows requires datetime and not utc_datetime
 		specific.SetWindowsTime(result["datetime"].(string), arguments)
-	} else if runtime.GOOS == "darwin" {
-		fmt.Println("This program doesn't work on a macOS system yet.")
-		fmt.Println("Because I don't have a Apple computer to test it.")
 	}
 }
