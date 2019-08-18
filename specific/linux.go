@@ -42,4 +42,7 @@ func SetLinuxTime(utcDatetime string, timezone string, arguments constants.Argum
 
 		os.Exit(5)
 	}
+
+	// Print how long it took to execute the commands
+	logger.PrintElapsedTime()
 }

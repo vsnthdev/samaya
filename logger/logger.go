@@ -85,7 +85,7 @@ func PrintElapsedTime() {
 		if runtime.GOOS == "windows" {
 			fmt.Printf("took     %0.2fs \n", roundUp(elapsed.Seconds(), 2))
 		} else {
-			fmt.Printf(color.BLightGreen("took")+"%0.2fs \n", roundUp(elapsed.Seconds(), 2))
+			fmt.Printf(color.Green("took")+"     %0.2fs \n", roundUp(elapsed.Seconds(), 2))
 		}
 	}
 }
