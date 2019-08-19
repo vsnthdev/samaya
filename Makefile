@@ -70,6 +70,13 @@ install:
 	cp ./misc/systemd.service /etc/systemd/system/samaya.service
 	cp ./bin/samaya /usr/bin/samaya
 
+# Target to create Arch Linux package
+archpkg:
+	mkdir -p ./cache
+	cp ./misc/PKGBUILD ./cache/PKGBUILD
+	sed -i -e 's/{{version}}/$(VERSION)/g' ./cache/PKGBUILD
+	sed -i -e 's/{{revision}}/1/g' ./cache/PKGBUILD
+
 # Clean any generated files
 clean:
-	rm -rf ./bin
+	rm -rf ./bin ./cache

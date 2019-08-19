@@ -1,2 +1,5 @@
 # The bin directory where compiled binarys are placed
 bin/
+
+# The cache directory where we build packages
+cache/
