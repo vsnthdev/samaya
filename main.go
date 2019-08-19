@@ -27,6 +27,8 @@ func main() {
 	rootCmd.Flags().BoolVarP(&arguments.Verbose, "verbose", "v", false, "Show extended output")
 	rootCmd.Flags().BoolVarP(&arguments.DryRun, "dry", "d", false, "Fetch the time, but don't update it")
 	rootCmd.Flags().BoolVarP(&arguments.Version, "version", "V", false, "Print the version number and exit")
+
+	rootCmd.Flags().StringVarP(&arguments.Timezone, "timezone", "t", "auto", "Set time of that timezone")
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)

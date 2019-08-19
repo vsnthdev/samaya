@@ -16,20 +16,18 @@ import (
 // Start is the function that is trigger by the command line parser cobra
 func Start(arguments constants.ArgumentSkleton) {
 
-	// Tell the user that we started sending HTTP request
-	logger.Info("Sending HTTP Request to: " + constants.EndPoint)
+	var resp *http.Response
 
-	// Send a GET HTTP request to our endpoint to get the current time
-	response, err := http.Get(constants.EndPoint)
-	if err != nil {
-		// Tell the user that we were unable to send an HTTP request to the API
-		logger.Fatal("Failed to send HTTP GET request to: " + constants.EndPoint)
-
-		os.Exit(1)
+	// Check if a timezone was provided
+	if arguments.Timezone != "auto" {
+		endpointString := constants.TimezoneEndPoint + arguments.Timezone
+		resp = sendHTTPRequest(endpointString)
+	} else {
+		resp = sendHTTPRequest(constants.AutoEndPoint)
 	}
 
 	// Convert the response's Body into a string
-	data, err := ioutil.ReadAll(response.Body)
+	data, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		// Tell the user we were unable to get the response from server
 		logger.Fatal("Failed to get response from the server.")
@@ -70,4 +68,21 @@ func Start(arguments constants.ArgumentSkleton) {
 		// Windows requires datetime and not utc_datetime
 		specific.SetWindowsTime(result["datetime"].(string), arguments)
 	}
+}
+
+// sendHTTPRequest is the function that sends a HTTP GET request and returns the body
+func sendHTTPRequest(url string) *http.Response {
+	// Tell the user that we started sending HTTP request
+	logger.Info("Sending HTTP Request to: " + url)
+
+	// Send a GET HTTP request to our endpoint to get the current time
+	response, err := http.Get(url)
+	if err != nil {
+		// Tell the user that we were unable to send an HTTP request to the API
+		logger.Fatal("Failed to send HTTP GET request to: " + url)
+
+		os.Exit(1)
+	}
+
+	return response
 }
