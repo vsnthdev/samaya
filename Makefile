@@ -32,11 +32,11 @@ FLAGS := -ldflags "-X 'main.Version=$(VERSION)' -X 'main.Build=$(BUILD)' -X 'mai
 # Add automatically the ".exe" at the end of build file
 BINEXE := 
 ifeq ($(OS),Windows_NT)
-	BINEXE += ./bin/samaya-dev.exe
+	BINEXE += ./bin/samaya.exe
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
-		BINEXE += ./bin/samaya-dev
+		BINEXE += ./bin/samaya
 	endif
 endif
 
@@ -63,6 +63,12 @@ build-all:
 
 	GOOS=linux GOARCH=386 go build $(FLAGS) -o ./bin/samaya-linux32
 	GOOS=windows GOARCH=386 go build $(FLAGS) -o ./bin/samaya-win32.exe
+
+# Install the program and the systemd service
+# [NOTE]: This target only works on Linux
+install:
+	cp ./misc/systemd.service /etc/systemd/system/samaya.service
+	cp ./bin/samaya /usr/bin/samaya
 
 # Clean any generated files
 clean:
