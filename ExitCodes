@@ -5,3 +5,5 @@
 5 = Failed to set time
 6 = Unable to parse the Linux time from the server
 7 = Failed to set timezone
+8 = API Error
+9 = Unknown Location

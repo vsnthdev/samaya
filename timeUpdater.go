@@ -51,6 +51,18 @@ func Start(arguments constants.ArgumentSkleton) {
 		os.Exit(3)
 	}
 
+	// Check if there is an error
+	if result["error"] != nil {
+		switch errorType := result["error"]; errorType {
+		case "unknown location":
+			logger.Fatal("Invalid timezone provided")
+			os.Exit(9)
+		default:
+			logger.Fatal("The server responded with an error")
+			os.Exit(8)
+		}
+	}
+
 	if runtime.GOOS == "linux" {
 		// As Linux time can be set using unix time, no need to parse and format the time
 		specific.SetLinuxTime(result["utc_datetime"].(string), result["timezone"].(string), arguments)
