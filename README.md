@@ -50,9 +50,22 @@ Flags:
 
 #### Build Procedure:
 ```
-git clone --single-branch --branch mainline https://github.com/vasanthdeveloper/samaya.git
+# Create the namespace
+mkdir -p "$(go env GOPATH)/src/vasanthdeveloper.com"
+
+# Clone the project
+git clone --single-branch --branch mainline https://github.com/vasanthdeveloper/samaya.git "$(go env GOPATH)/src/vasanthdeveloper.com/samaya"
+
+# Enter the freshly cloned project
+cd "$(go env GOPATH)/src/vasanthdeveloper.com/samaya"
+
+# Start the compilation
 make
+
+# Install the compiled binaries
 sudo make install
+
+# Make samaya sync time, every time we boot the computer
 sudo systemctl enable --now samaya
 ```
 

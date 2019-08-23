@@ -69,6 +69,7 @@ build-all:
 install:
 	cp ./misc/systemd.service /etc/systemd/system/samaya.service
 	cp ./bin/samaya /usr/bin/samaya
+	systemctl daemon-reload
 
 # Target to create Arch Linux package
 archpkg:
