@@ -6,8 +6,8 @@ import (
 
 	"github.com/gosuri/uitable"
 
-	"github.com/vasanthdeveloper/samaya/constants"
-	"github.com/vasanthdeveloper/samaya/logger"
+	"vasanthdeveloper.com/samaya/constants"
+	"vasanthdeveloper.com/samaya/logger"
 
 	"github.com/spf13/cobra"
 )

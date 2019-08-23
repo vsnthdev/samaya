@@ -7,10 +7,10 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/vasanthdeveloper/samaya/logger"
+	"vasanthdeveloper.com/samaya/logger"
 
-	"github.com/vasanthdeveloper/samaya/constants"
-	"github.com/vasanthdeveloper/samaya/specific"
+	"vasanthdeveloper.com/samaya/constants"
+	"vasanthdeveloper.com/samaya/specific"
 )
 
 // Start is the function that is trigger by the command line parser cobra

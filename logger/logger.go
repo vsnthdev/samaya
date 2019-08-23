@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/bclicn/color"
-	"github.com/vasanthdeveloper/samaya/constants"
+	"vasanthdeveloper.com/samaya/constants"
 )
 
 // Arguments is the variable were the arguments parsed by cobra module

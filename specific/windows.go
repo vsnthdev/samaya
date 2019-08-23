@@ -5,8 +5,8 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/vasanthdeveloper/samaya/constants"
-	"github.com/vasanthdeveloper/samaya/logger"
+	"vasanthdeveloper.com/samaya/constants"
+	"vasanthdeveloper.com/samaya/logger"
 )
 
 // SetWindowsTime is the function that sets the time for a Linux operating system
