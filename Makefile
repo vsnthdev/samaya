@@ -77,6 +77,8 @@ archpkg:
 	cp ./misc/PKGBUILD ./cache/PKGBUILD
 	sed -i -e 's/{{version}}/$(VERSION)/g' ./cache/PKGBUILD
 	sed -i -e 's/{{revision}}/1/g' ./cache/PKGBUILD
+	cd ./cache && echo "" >> ./PKGBUILD && makepkg -g >> ./PKGBUILD
+	cd ./cache && makepkg
 
 # Clean any generated files
 clean:
