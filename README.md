@@ -26,14 +26,14 @@
 
 ## Usage
 ```
-____ ____ _  _ ____ _   _ ____ 
-[__  |__| |\/| |__|  \_/  |__| 
-___] |  | |  | |  |   |   |  |
+samaya
+A time synchronization program that uses HTTP protocol.
 
 Usage:
   samaya [flags]
 
 Flags:
+  -D, --delay int         Delay the number of seconds before requesting the time
   -d, --dry               Fetch the time, but don't update it
   -h, --help              help for samaya
   -t, --timezone string   Set time of that timezone (default "auto")
