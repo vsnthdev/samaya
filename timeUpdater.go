@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"runtime"
+	"time"
 
 	"vasanthdeveloper.com/samaya/logger"
 
@@ -14,9 +15,14 @@ import (
 )
 
 // Start is the function that is trigger by the command line parser cobra
-func Start(arguments constants.ArgumentSkleton) {
+func Start(arguments constants.ArgumentSkeleton) {
 
 	var resp *http.Response
+
+	// Check if a delay is provided, if yes then wait the the number of seconds
+	if arguments.Delay > 0 {
+		time.Sleep(time.Duration(arguments.Delay) * time.Second)
+	}
 
 	// Check if a timezone was provided
 	if arguments.Timezone != "auto" {

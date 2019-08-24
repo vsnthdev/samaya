@@ -10,7 +10,7 @@ import (
 )
 
 // SetWindowsTime is the function that sets the time for a Linux operating system
-func SetWindowsTime(dateTime string, arguments constants.ArgumentSkleton) {
+func SetWindowsTime(dateTime string, arguments constants.ArgumentSkeleton) {
 	// Tell the user that we are parsing the time
 	logger.Info("Parsing the time string from server.")
 

@@ -14,7 +14,7 @@ import (
 
 // Arguments is the variable were the arguments parsed by cobra module
 // will be passed on to the logger module
-var Arguments = constants.ArgumentSkleton{}
+var Arguments = constants.ArgumentSkeleton{}
 
 // Build is where the program's build type is passed from main package
 var Build string

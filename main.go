@@ -12,14 +12,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var arguments = constants.ArgumentSkleton{}
+var arguments = constants.ArgumentSkeleton{}
 
 var rootCmd = &cobra.Command{
 	Use:   "samaya",
-	Short: "A short description",
-	Long: `____ ____ _  _ ____ _   _ ____ 
-[__  |__| |\/| |__|  \_/  |__| 
-___] |  | |  | |  |   |   |  | `,
+	Short: "samaya",
+	Long: `samaya
+A time synchronization program that uses HTTP protocol.`,
 	Run: start,
 }
 
@@ -27,6 +26,7 @@ func main() {
 	rootCmd.Flags().BoolVarP(&arguments.Verbose, "verbose", "v", false, "Show extended output")
 	rootCmd.Flags().BoolVarP(&arguments.DryRun, "dry", "d", false, "Fetch the time, but don't update it")
 	rootCmd.Flags().BoolVarP(&arguments.Version, "version", "V", false, "Print the version number and exit")
+	rootCmd.Flags().IntVarP(&arguments.Delay, "delay", "D", 0, "Delay the number of seconds before requesting the time")
 
 	rootCmd.Flags().StringVarP(&arguments.Timezone, "timezone", "t", "auto", "Set time of that timezone")
 	err := rootCmd.Execute()
