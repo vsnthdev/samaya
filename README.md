@@ -43,7 +43,7 @@ Flags:
 
 ## Building
 #### Dependencies:
-| Package | Minimum Version |
+| Package | Recommended Version |
 |---------|-----------------|
 | Go      | v1.12.8         |
 | Make    | v4.2.1          |

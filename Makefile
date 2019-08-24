@@ -11,6 +11,10 @@ BUILD := Development
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git rev-parse HEAD)
 
+# Additional Compilation Variables
+PREFIX := /usr/local
+DESTDIR :=
+
 # Platform dependent automatic program information
 ifeq ($(OS),Windows_NT)
 	USER := $(shell powershell echo $$env:USERNAME)
@@ -67,9 +71,8 @@ build-all:
 # Install the program and the systemd service
 # [NOTE]: This target only works on Linux
 install:
-	cp ./misc/systemd.service /etc/systemd/system/samaya.service
-	cp ./bin/samaya /usr/bin/samaya
-	systemctl daemon-reload
+	install -Dm644 misc/systemd.service $(DESTDIR)/etc/systemd/system/samaya.service
+	install -Dm755 bin/samaya $(DESTDIR)$(PREFIX)/bin/samaya
 
 # Target to create Arch Linux package
 archpkg:
