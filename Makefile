@@ -31,7 +31,7 @@ else
 endif
 
 # Compilation flags
-FLAGS := -ldflags "-X 'main.Version=$(VERSION)' -X 'main.Build=$(BUILD)' -X 'main.GitBranch=$(BRANCH)' -X 'main.CommitHash=$(COMMIT)' -X 'main.Username=$(USER)' -X 'main.Hostname=$(HOSTNAME)' -X 'main.BuildTime=$(TIME)' -X 'main.BuildOS=$(BUILDOS)' -X 'main.Kernel=$(KERNEL)'"
+FLAGS := -ldflags "-X 'main.Version=$(VERSION)' -X 'main.Build=$(BUILD)' -X 'main.GitBranch=$(BRANCH)' -X 'main.CommitHash=$(COMMIT)' -X 'main.Username=$(USER)' -X 'main.Hostname=$(shell hostname)' -X 'main.BuildTime=$(TIME)' -X 'main.BuildOS=$(BUILDOS)' -X 'main.Kernel=$(KERNEL)'"
 
 # Add automatically the ".exe" at the end of build file
 BINEXE := 

@@ -44,9 +44,10 @@ Flags:
 ## Building
 #### Dependencies:
 | Package | Recommended Version |
-|---------|-----------------|
-| Go      | v1.12.8         |
-| Make    | v4.2.1          |
+|---------|---------------------|
+| Go      | v1.12.8             |
+| Make    | v4.2.1              |
+| Git     | v2.23.0             |
 
 #### Build Procedure:
 ```
