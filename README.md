@@ -33,12 +33,13 @@ Usage:
   samaya [flags]
 
 Flags:
-  -D, --delay int         Delay the number of seconds before requesting the time
-  -d, --dry               Fetch the time, but don't update it
-  -h, --help              help for samaya
-  -t, --timezone string   Set time of that timezone (default "auto")
-  -v, --verbose           Show extended output
-  -V, --version           Print the version number and exit
+  -D, --delay int           Delay the number of seconds before requesting the time
+  -d, --dry                 Fetch the time, but don't update it
+  -h, --help                help for samaya
+  -t, --timezone string     Set time of that timezone (default "auto")
+  -v, --verbose             Show extended output
+  -V, --version             Print the version number and exit
+  -w, --wait for internet   Wait until an active internet connection is established
 ```
 
 ## Building

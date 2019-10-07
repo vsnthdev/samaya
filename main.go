@@ -27,7 +27,7 @@ func main() {
 	rootCmd.Flags().BoolVarP(&arguments.DryRun, "dry", "d", false, "Fetch the time, but don't update it")
 	rootCmd.Flags().BoolVarP(&arguments.Version, "version", "V", false, "Print the version number and exit")
 	rootCmd.Flags().IntVarP(&arguments.Delay, "delay", "D", 0, "Delay the number of seconds before requesting the time")
-	rootCmd.Flags().BoolVarP(&arguments.WaitForInternet, "wait for internet", "w", false, "Wait until an active internet connection is established.")
+	rootCmd.Flags().BoolVarP(&arguments.WaitForInternet, "wait for internet", "w", false, "Wait until an active internet connection is established")
 
 	rootCmd.Flags().StringVarP(&arguments.Timezone, "timezone", "t", "auto", "Set time of that timezone")
 	err := rootCmd.Execute()
