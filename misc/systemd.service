@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/local/bin/samaya
+ExecStart=/usr/local/bin/samaya -w
 
 [Install]
 WantedBy=multi-user.target

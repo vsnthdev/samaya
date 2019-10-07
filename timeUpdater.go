@@ -27,9 +27,9 @@ func Start(arguments constants.ArgumentSkeleton) {
 	// Check if a timezone was provided
 	if arguments.Timezone != "auto" {
 		endpointString := constants.TimezoneEndPoint + arguments.Timezone
-		resp = sendHTTPRequest(endpointString)
+		resp = sendHTTPRequest(endpointString, arguments, false)
 	} else {
-		resp = sendHTTPRequest(constants.AutoEndPoint)
+		resp = sendHTTPRequest(constants.AutoEndPoint, arguments, false)
 	}
 
 	// Convert the response's Body into a string
@@ -77,17 +77,25 @@ func Start(arguments constants.ArgumentSkeleton) {
 }
 
 // sendHTTPRequest is the function that sends a HTTP GET request and returns the body
-func sendHTTPRequest(url string) *http.Response {
+func sendHTTPRequest(url string, arguments constants.ArgumentSkeleton, recursing bool) *http.Response {
 	// Tell the user that we started sending HTTP request
-	logger.Info("Sending HTTP Request to: " + url)
+	// only once, the first time
+	if recursing == false {
+		logger.Info("Sending HTTP Request to: " + url)
+	}
 
 	// Send a GET HTTP request to our endpoint to get the current time
 	response, err := http.Get(url)
 	if err != nil {
-		// Tell the user that we were unable to send an HTTP request to the API
-		logger.Fatal("Failed to send HTTP GET request to: " + url)
+		// Check if we have to wait until internet comes
+		if arguments.WaitForInternet == false {
+			// Tell the user that we were unable to send an HTTP request to the API
+			logger.Fatal("Failed to send HTTP GET request to: " + url)
+			os.Exit(1)
+		}
 
-		os.Exit(1)
+		// Loop this function until internet comes
+		return sendHTTPRequest(url, arguments, true)
 	}
 
 	return response
