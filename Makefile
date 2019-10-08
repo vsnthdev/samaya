@@ -6,8 +6,8 @@
 #                      |
 
 # Critical Program Information
-VERSION := 0.0.0
-BUILD := Development
+VERSION := 1.0.0
+BUILD := Production
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git rev-parse HEAD)
 
