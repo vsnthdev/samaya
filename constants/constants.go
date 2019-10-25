@@ -13,8 +13,8 @@ type ArgumentSkeleton struct {
 
 // AutoEndPoint is the variable that will contain the URL at which we send a HTTP
 // GET request to get the time
-var AutoEndPoint = "https://worldtimeapi.org/api/ip"
+var AutoEndPoint = "http://worldtimeapi.org/api/ip"
 
 // TimezoneEndPoint is the variable that will contain the URL to which we append the timezone
 // And send a GET HTTP request to get time
-var TimezoneEndPoint = "https://worldtimeapi.org/api/timezone/"
+var TimezoneEndPoint = "http://worldtimeapi.org/api/timezone/"
