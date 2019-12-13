@@ -79,6 +79,6 @@ Please feel free to raise an issue for suggestions or bugs. You can also tweet m
 <hr>
 
 > [vasanth.tech](https://vasanth.tech) &nbsp;&middot;&nbsp;
-> YouTube [@vasanthdeveloper](https://youtube.com/vasanthdeveloper?sub_confirmation=1) &nbsp;&middot;&nbsp;
-> Twitter [@vasanthdevelope](https://twitter.com/vasanthdevelope) &nbsp;&middot;&nbsp;
-> Discord [Vasanth Developer](https://discord.gg/UQuhrxE)
+> YouTube [@vasanthdeveloper](https://vasanth.tech/youtube) &nbsp;&middot;&nbsp;
+> Twitter [@vasanthdevelope](https://vasanth.tech/twitter) &nbsp;&middot;&nbsp;
+> Discord [Vasanth Developer](https://vasanth.tech/discord)
