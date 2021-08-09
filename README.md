@@ -1,30 +1,29 @@
-# `samaya`
-> ( समय​ ) - A time synchronization program that uses HTTP protocol.
-
-<p align="left">
-    <a href="https://github.com/vasanthdeveloper/samaya/releases">
-        <img src="https://img.shields.io/github/v/release/vasanthdeveloper/samaya?include_prereleases&style=flat-square" alt="">
+<h1 align="center">samaya</h1>
+<p align="center"><strong>( समय​ ) - A time synchronization program that uses HTTP protocol.</strong></p>
+<p align="center">
+    <a href="https://github.com/vsnthdev/samaya/releases">
+        <img src="https://img.shields.io/github/v/release/vsnthdev/samaya?include_prereleases&style=flat-square">
     </a>
-    <a href="https://github.com/vasanthdeveloper/samaya/releases">
-        <img src="https://img.shields.io/github/downloads/vasanthdeveloper/samaya/total?style=flat-square" alt="">
+    <a href="https://github.com/vsnthdev/samaya/releases">
+        <img src="https://img.shields.io/github/downloads/vsnthdev/samaya/total?style=flat-square">
     </a>
-    <a href="#">
-        <img src="https://img.shields.io/github/last-commit/vasanthdeveloper/samaya.svg?style=flat-square" alt="">
+    <a href="https://github.com/vsnthdev/samaya/commits/main">
+        <img src="https://img.shields.io/github/last-commit/vsnthdev/samaya.svg?style=flat-square">
     </a>
-    <a href="#">
-        <img src="https://img.shields.io/github/issues/vasanthdeveloper/samaya.svg?style=flat-square" alt="">
+    <a href="https://github.com/vsnthdev/samaya/issues">
+        <img src="https://img.shields.io/github/issues/vsnthdev/samaya.svg?style=flat-square">
     </a>
-    <a href="https://discord.gg/UQuhrxE">
-        <img src="https://img.shields.io/discord/600920475341946893?style=flat-square" alt="">
-    </a>
-    <a href="https://github.com/vasanthdeveloper/samaya/blob/mainline/LICENSE">
-        <img src="https://img.shields.io/github/license/vasanthdeveloper/samaya?style=flat-square" alt="">
+    <a href="https://github.com/vsnthdev/samaya/blob/main/LICENSE.md">
+        <img src="https://img.shields.io/github/license/vsnthdev/samaya?style=flat-square">
     </a>
 </p>
+<br>
+
+<!-- header -->
 
 `samaya` is a command line program for synchronizes your system clock using the HTTPS protocol from <a href="https://worldtimeapi.org" target="_blank">World Time API</a>. `samaya` is very helpful in situations where NTP (Network Time Protocol) packets are blocked or inaccessible.
 
-## Usage
+## 🚀 Usage
 ```
 samaya
 A time synchronization program that uses HTTP protocol.
@@ -42,7 +41,7 @@ Flags:
   -w, --wait for internet   Wait until an active internet connection is established
 ```
 
-## Building
+## 🛠 Building
 #### Dependencies:
 | Package | Recommended Version |
 |---------|---------------------|
@@ -71,14 +70,13 @@ sudo make install
 sudo systemctl enable --now samaya
 ```
 
-## Contributions & Issues
-Please feel free to raise an issue for suggestions or bugs. You can also tweet me [@vasanthdevelope](https://twitter.com/vasanthdevelope).
+<!-- footer -->
 
-## License
-> _The samaya project is released under the [GNU Public License v2](LICENSE). <br> Developed &amp; Maintained By Vasanth Developer. Copyright 2019 © Vasanth Developer._
+## 📰 License
+> The **samaya** project is released under the [MIT license](LICENSE.md). <br> Developed &amp; maintained By Vasanth Srivatsa. Copyright 2021 © Vasanth Developer.
 <hr>
 
-> [vasanth.tech](https://vasanth.tech) &nbsp;&middot;&nbsp;
-> YouTube [@vasanthdeveloper](https://vasanth.tech/youtube) &nbsp;&middot;&nbsp;
-> Twitter [@vasanthdevelope](https://vasanth.tech/twitter) &nbsp;&middot;&nbsp;
-> Discord [Vasanth Developer](https://vasanth.tech/discord)
+> <a href="https://vsnth.dev" target="_blank" rel="noopener">vsnth.dev</a> &nbsp;&middot;&nbsp;
+> YouTube <a href="https://vas.cx/videos" target="_blank" rel="noopener">@vasanthdeveloper</a> &nbsp;&middot;&nbsp;
+> Twitter <a href="https://vas.cx/twitter" target="_blank" rel="noopener">@vsnthdev</a> &nbsp;&middot;&nbsp;
+> Discord <a href="https://vas.cx/discord" target="_blank" rel="noopener">Vasanth Developer</a>
